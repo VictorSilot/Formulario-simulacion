@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pre-Análisis de Financiamiento | Víctor Silot</title>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="logo-area">
+        <img src="logo.jpg" alt="Victor Silot Brokers">
+        <h1>Víctor Silot Brokers</h1>
+        <p>Pre-Análisis de Financiamiento Inmobiliario</p>
+    </div>
+
+    <form id="financiamientoForm">
+
+        <h2>Información Personal</h2>
+
+        <div class="form-group">
+            <label>Nombre Completo</label>
+            <input type="text" id="nombre" required>
+        </div>
+
+        <div class="form-group">
+            <label>CPF</label>
+            <input type="text" id="cpf" required>
+        </div>
+
+        <div class="form-group">
+            <label>Fecha de Nacimiento</label>
+            <input type="date" id="fechaNacimiento" required>
+        </div>
+
+        <div class="form-group">
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" id="telefono" required>
+        </div>
+
+        <div class="form-group">
+            <label>Estado Civil</label>
+            <select id="estadoCivil">
+                <option value="">Seleccione</option>
+                <option>Soltero(a)</option>
+                <option>Casado(a)</option>
+                <option>Divorciado(a)</option>
+                <option>Viudo(a)</option>
+            </select>
+        </div>
+
+        <div id="conyugeSection" style="display:none;">
+
+            <h2>Información del Cónyuge</h2>
+
+            <div class="form-group">
+                <label>Nombre del Cónyuge</label>
+                <input type="text" id="nombreConyuge">
+            </div>
+
+            <div class="form-group">
+                <label>Ingreso Bruto Mensual del Cónyuge</label>
+                <input type="number" id="salarioConyuge">
+            </div>
+
+        </div>
+
+        <h2>Información Laboral</h2>
+
+        <div class="form-group">
+            <label>Profesión</label>
+            <input type="text" id="profesion">
+        </div>
+
+        <div class="form-group">
+            <label>Ingreso Bruto Mensual</label>
+            <input type="number" id="salario" required>
+        </div>
+
+        <div class="form-group">
+            <label>¿Tiene más de 3 años de trabajo registrado?</label>
+            <select id="trabajo">
+                <option>Sí</option>
+                <option>No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>¿Tiene dependientes?</label>
+            <select id="dependientes">
+                <option>No</option>
+                <option>Sí</option>
+            </select>
+        </div>
+
+        <h2>Información del Inmueble</h2>
+
+        <div class="form-group">
+            <label>Tipo de Inmueble</label>
+            <select id="tipoInmueble">
+                <option>Casa</option>
+                <option>Apartamento</option>
+                <option>Terreno</option>
+                <option>Comercial</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Condición</label>
+            <select id="condicion">
+                <option>Nuevo</option>
+                <option>Usado</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Ciudad de Interés</label>
+            <input type="text" id="ciudad">
+        </div>
+
+        <button type="submit">
+            Enviar por WhatsApp
+        </button>
+
+    </form>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

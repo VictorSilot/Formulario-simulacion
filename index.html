@@ -1,136 +1,585 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Pre-Análisis de Financiamiento | Víctor Silot</title>
-
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Análisis de Financiamiento | Víctor Silot Brokers</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="container">
+  <div class="wrapper">
 
-    <div class="logo-area">
-        <img src="logo.jpg" alt="Victor Silot Brokers">
-        <h1>Víctor Silot Brokers</h1>
-        <p>Pre-Análisis de Financiamiento Inmobiliario</p>
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+      <img src="img/logo.png" alt="Corretor Víctor Silot" class="logo" onerror="this.style.display='none'">
+      <h1>Corretor Víctor Silot</h1>
+      <p>Pre-Análisis de Financiamiento Inmobiliario</p>
+    </header>
+
+    <!-- ===== BARRA DE PROGRESO ===== -->
+    <div class="progress-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="17">
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill" style="width:16.6%"></div>
+      </div>
+      <div class="progress-label">
+        <span id="progressText">Paso 1 de 6</span>
+        <span id="progressPct">17%</span>
+      </div>
     </div>
 
-    <form id="financiamientoForm">
+    <!-- ===== TARJETA PRINCIPAL ===== -->
+    <main class="card">
 
-        <h2>Información Personal</h2>
+      <!-- ======================================================
+           PASO 1: DATOS PERSONALES
+      ====================================================== -->
+      <section class="step active" id="step1" aria-label="Paso 1: Datos Personales">
 
-        <div class="form-group">
-            <label>Nombre Completo</label>
-            <input type="text" id="nombre" required>
+        <div class="step-header">
+          <span class="step-badge">Paso 1</span>
+          <h2>Datos Personales del Titular</h2>
+          <p>Información básica de identificación</p>
         </div>
 
-        <div class="form-group">
-            <label>CPF</label>
-            <input type="text" id="cpf" required>
-        </div>
+        <div class="step-body">
 
-        <div class="form-group">
-            <label>Fecha de Nacimiento</label>
-            <input type="date" id="fechaNacimiento" required>
-        </div>
-
-        <div class="form-group">
-            <label>Teléfono / WhatsApp</label>
-            <input type="tel" id="telefono" required>
-        </div>
-
-        <div class="form-group">
-            <label>Estado Civil</label>
-            <select id="estadoCivil">
-                <option value="">Seleccione</option>
-                <option>Soltero(a)</option>
-                <option>Casado(a)</option>
-                <option>Divorciado(a)</option>
-                <option>Viudo(a)</option>
-            </select>
-        </div>
-
-        <div id="conyugeSection" style="display:none;">
-
-            <h2>Información del Cónyuge</h2>
-
-            <div class="form-group">
-                <label>Nombre del Cónyuge</label>
-                <input type="text" id="nombreConyuge">
+          <!-- Nombre, CPF, Teléfono, Email, Profesión -->
+          <div class="grid-2">
+            <div class="form-group span-full">
+              <label for="nombre">Nombre Completo <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="nombre" placeholder="Como consta en el documento" autocomplete="name">
+              <span class="field-error" role="alert">Ingrese su nombre completo</span>
             </div>
-
             <div class="form-group">
-                <label>Ingreso Bruto Mensual del Cónyuge</label>
-                <input type="number" id="salarioConyuge">
+              <label for="cpf">CPF <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="14" inputmode="numeric">
+              <span class="field-error" role="alert">CPF inválido</span>
             </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono / WhatsApp <span class="req" aria-hidden="true">*</span></label>
+              <input type="tel" id="telefono" placeholder="(67) 99999-9999" autocomplete="tel">
+              <span class="field-error" role="alert">Ingrese un teléfono válido</span>
+            </div>
+            <div class="form-group">
+              <label for="email">Correo Electrónico</label>
+              <input type="email" id="email" placeholder="nombre@correo.com" autocomplete="email">
+              <span class="field-error" role="alert">Correo inválido</span>
+            </div>
+            <div class="form-group">
+              <label for="profesion">Profesión</label>
+              <input type="text" id="profesion" placeholder="Ej: Funcionario público">
+            </div>
+          </div>
+
+          <!-- Fecha de Nacimiento -->
+          <div class="section-label">Fecha de Nacimiento</div>
+          <div class="grid-3">
+            <div class="form-group">
+              <label for="diaNac">Día <span class="req" aria-hidden="true">*</span></label>
+              <input type="number" id="diaNac" placeholder="DD" min="1" max="31" inputmode="numeric">
+            </div>
+            <div class="form-group">
+              <label for="mesNac">Mes <span class="req" aria-hidden="true">*</span></label>
+              <select id="mesNac">
+                <option value="">Mes</option>
+                <option value="01">Enero</option>
+                <option value="02">Febrero</option>
+                <option value="03">Marzo</option>
+                <option value="04">Abril</option>
+                <option value="05">Mayo</option>
+                <option value="06">Junio</option>
+                <option value="07">Julio</option>
+                <option value="08">Agosto</option>
+                <option value="09">Septiembre</option>
+                <option value="10">Octubre</option>
+                <option value="11">Noviembre</option>
+                <option value="12">Diciembre</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="anioNac">Año <span class="req" aria-hidden="true">*</span></label>
+              <input type="number" id="anioNac" placeholder="AAAA" min="1930" max="2007" inputmode="numeric">
+            </div>
+          </div>
+
+          <!-- Estado Civil -->
+          <div class="section-label">Estado Civil</div>
+          <div class="form-group">
+            <div class="toggle-group" id="estadoCivilGroup" role="group" aria-label="Estado Civil">
+              <button type="button" class="toggle-btn" data-value="Soltero(a)">Soltero(a)</button>
+              <button type="button" class="toggle-btn" data-value="Casado(a)">Casado(a)</button>
+              <button type="button" class="toggle-btn" data-value="Unión Estable">Unión Estable</button>
+              <button type="button" class="toggle-btn" data-value="Divorciado(a)">Divorciado(a)</button>
+              <button type="button" class="toggle-btn" data-value="Viudo(a)">Viudo(a)</button>
+            </div>
+            <input type="hidden" id="estadoCivil" value="">
+          </div>
+
+          <!-- Navegación -->
+          <nav class="step-nav">
+            <button type="button" class="btn btn-next" id="next1">Continuar →</button>
+          </nav>
 
         </div>
+      </section>
 
-        <h2>Información Laboral</h2>
+      <!-- ======================================================
+           PASO 2: SITUACIÓN LABORAL E INGRESOS
+      ====================================================== -->
+      <section class="step" id="step2" aria-label="Paso 2: Situación Laboral">
 
-        <div class="form-group">
-            <label>Profesión</label>
-            <input type="text" id="profesion">
+        <div class="step-header">
+          <span class="step-badge">Paso 2</span>
+          <h2>Situación Laboral e Ingresos</h2>
+          <p>Información sobre su capacidad financiera</p>
         </div>
 
-        <div class="form-group">
-            <label>Ingreso Bruto Mensual</label>
-            <input type="number" id="salario" required>
-        </div>
+        <div class="step-body">
 
-        <div class="form-group">
-            <label>¿Tiene más de 3 años de trabajo registrado?</label>
-            <select id="trabajo">
-                <option>Sí</option>
-                <option>No</option>
-            </select>
-        </div>
+          <!-- Tipo de vínculo -->
+          <div class="form-group">
+            <label>Tipo de vínculo laboral <span class="req" aria-hidden="true">*</span></label>
+            <div class="toggle-group" id="vinculoGroup" role="group" aria-label="Tipo de vínculo">
+              <button type="button" class="toggle-btn" data-value="CLT (registrado)">CLT</button>
+              <button type="button" class="toggle-btn" data-value="Autónomo">Autónomo</button>
+              <button type="button" class="toggle-btn" data-value="Empresario">Empresario</button>
+              <button type="button" class="toggle-btn" data-value="Funcionario Público">Func. Público</button>
+              <button type="button" class="toggle-btn" data-value="Jubilado/Pensionado">Jubilado</button>
+            </div>
+            <input type="hidden" id="vinculo" value="">
+          </div>
 
-        <div class="form-group">
+          <!-- Ingreso Bruto -->
+          <div class="form-group">
+            <label for="salario">Ingreso Bruto Mensual <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="salario" placeholder="R$ 0,00" inputmode="numeric">
+            <span class="field-hint">Incluya todos los ingresos: salario, alquileres, pensiones, etc.</span>
+            <span class="field-error" role="alert">Ingrese sus ingresos</span>
+          </div>
+
+          <!-- Ingresos variables -->
+          <div class="form-group">
+            <label>¿Posee ingresos variables o complementarios?</label>
+            <div class="toggle-group" id="ingVarGroup" role="group">
+              <button type="button" class="toggle-btn selected" data-value="No">No</button>
+              <button type="button" class="toggle-btn" data-value="Sí">Sí</button>
+            </div>
+            <input type="hidden" id="ingVar" value="No">
+          </div>
+
+          <div class="conditional-section" id="ingVarSection">
+            <div class="form-group">
+              <label for="ingVarOrigen">Origen de los ingresos variables</label>
+              <input type="text" id="ingVarOrigen" placeholder="Ej: freelance, alquiler, comisiones">
+            </div>
+            <div class="form-group">
+              <label for="ingVarMonto">Promedio mensual adicional</label>
+              <input type="text" id="ingVarMonto" placeholder="R$ 0,00" inputmode="numeric">
+            </div>
+          </div>
+
+          <!-- FGTS -->
+          <div class="form-group">
+            <label>¿Tiene más de 3 años de trabajo registrado (FGTS)?</label>
+            <div class="toggle-group" id="fgtsGroup" role="group">
+              <button type="button" class="toggle-btn" data-value="Sí">Sí</button>
+              <button type="button" class="toggle-btn" data-value="No">No</button>
+            </div>
+            <input type="hidden" id="fgts" value="">
+          </div>
+
+          <!-- Dependientes -->
+          <div class="form-group">
             <label>¿Tiene dependientes?</label>
-            <select id="dependientes">
-                <option>No</option>
-                <option>Sí</option>
-            </select>
+            <div class="toggle-group" id="dependientesGroup" role="group">
+              <button type="button" class="toggle-btn selected" data-value="No">No</button>
+              <button type="button" class="toggle-btn" data-value="Sí">Sí</button>
+            </div>
+            <input type="hidden" id="dependientes" value="No">
+          </div>
+
+          <!-- Navegación -->
+          <nav class="step-nav">
+            <button type="button" class="btn btn-prev" id="prev2">← Atrás</button>
+            <button type="button" class="btn btn-next" id="next2">Continuar →</button>
+          </nav>
+
+        </div>
+      </section>
+
+      <!-- ======================================================
+           PASO 3: SITUACIÓN FINANCIERA
+      ====================================================== -->
+      <section class="step" id="step3" aria-label="Paso 3: Situación Financiera">
+
+        <div class="step-header">
+          <span class="step-badge">Paso 3</span>
+          <h2>Situación Financiera del Titular</h2>
+          <p>Los bancos analizan cada punto de forma independiente</p>
         </div>
 
-        <h2>Información del Inmueble</h2>
+        <div class="step-body">
 
-        <div class="form-group">
-            <label>Tipo de Inmueble</label>
-            <select id="tipoInmueble">
-                <option>Casa</option>
-                <option>Apartamento</option>
-                <option>Terreno</option>
-                <option>Comercial</option>
-            </select>
+          <!-- Restricción -->
+          <div class="form-group">
+            <label>¿Posee restricción en el nombre (SPC/Serasa)?</label>
+            <div class="toggle-group" id="restriccionGroup" role="group">
+              <button type="button" class="toggle-btn selected" data-value="No">No</button>
+              <button type="button" class="toggle-btn" data-value="Sí">Sí</button>
+            </div>
+            <input type="hidden" id="restriccion" value="No">
+          </div>
+
+          <div class="conditional-section" id="restriccionSection">
+            <div class="form-group">
+              <label for="restriccionDesc">Describa brevemente la situación</label>
+              <input type="text" id="restriccionDesc" placeholder="Ej: deuda con Claro, en proceso de regularización">
+            </div>
+          </div>
+
+          <!-- Deudas atrasadas -->
+          <div class="form-group">
+            <label>¿Posee deudas atrasadas o cuentas impagas?</label>
+            <div class="toggle-group" id="deudasGroup" role="group">
+              <button type="button" class="toggle-btn selected" data-value="No">No</button>
+              <button type="button" class="toggle-btn" data-value="Sí">Sí</button>
+            </div>
+            <input type="hidden" id="deudas" value="No">
+          </div>
+
+          <!-- Préstamos activos -->
+          <div class="form-group">
+            <label>¿Posee préstamos activos?</label>
+            <div class="toggle-group" id="prestamosGroup" role="group">
+              <button type="button" class="toggle-btn selected" data-value="No">No</button>
+              <button type="button" class="toggle-btn" data-value="Sí">Sí</button>
+            </div>
+            <input type="hidden" id="prestamos" value="No">
+          </div>
+
+          <div class="conditional-section" id="prestamosSection">
+            <div class="form-group">
+              <label for="cuotaPrestamo">Valor de la cuota mensual del préstamo</label>
+              <input type="text" id="cuotaPrestamo" placeholder="R$ 0,00" inputmode="numeric">
+            </div>
+          </div>
+
+          <!-- Financiamientos activos -->
+          <div class="form-group">
+            <label>¿Posee financiamientos activos? (auto, otro inmueble, etc.)</label>
+            <div class="toggle-group" id="financiamientosGroup" role="group">
+              <button type="button" class="toggle-btn selected" data-value="No">No</button>
+              <button type="button" class="toggle-btn" data-value="Sí">Sí</button>
+            </div>
+            <input type="hidden" id="financiamientos" value="No">
+          </div>
+
+          <div class="conditional-section" id="financiamientosSection">
+            <div class="form-group">
+              <label for="cuotaFinanc">Valor total de las cuotas mensuales de financiamientos</label>
+              <input type="text" id="cuotaFinanc" placeholder="R$ 0,00" inputmode="numeric">
+            </div>
+          </div>
+
+          <!-- Historial de crédito -->
+          <div class="form-group">
+            <label>¿Ha tenido problemas de crédito anteriormente?</label>
+            <div class="toggle-group" id="historialGroup" role="group">
+              <button type="button" class="toggle-btn selected" data-value="No">No</button>
+              <button type="button" class="toggle-btn" data-value="Sí, ya regularizados">Ya regularizados</button>
+              <button type="button" class="toggle-btn" data-value="Sí, pendientes">Pendientes</button>
+            </div>
+            <input type="hidden" id="historial" value="No">
+          </div>
+
+          <!-- Navegación -->
+          <nav class="step-nav">
+            <button type="button" class="btn btn-prev" id="prev3">← Atrás</button>
+            <button type="button" class="btn btn-next" id="next3">Continuar →</button>
+          </nav>
+
+        </div>
+      </section>
+
+      <!-- ======================================================
+           PASO 4: CÓNYUGE
+      ====================================================== -->
+      <section class="step" id="step4" aria-label="Paso 4: Datos del Cónyuge">
+
+        <div class="step-header">
+          <span class="step-badge">Paso 4</span>
+          <h2>Datos del Cónyuge / Compañero(a)</h2>
+          <p>Los bancos evalúan la capacidad financiera familiar conjunta</p>
         </div>
 
-        <div class="form-group">
+        <div class="step-body">
+
+          <!-- Formulario cónyuge (solo si aplica) -->
+          <div id="conyugeRequired">
+            <div class="grid-2">
+              <div class="form-group span-full">
+                <label for="nombreConyuge">Nombre Completo del Cónyuge <span class="req"
+                    aria-hidden="true">*</span></label>
+                <input type="text" id="nombreConyuge" placeholder="Nombre completo">
+              </div>
+              <div class="form-group">
+                <label for="cpfConyuge">CPF del Cónyuge <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="cpfConyuge" placeholder="000.000.000-00" maxlength="14" inputmode="numeric">
+              </div>
+              <div class="form-group">
+                <label for="profesionConyuge">Profesión</label>
+                <input type="text" id="profesionConyuge" placeholder="Ej: Médica, Profesora">
+              </div>
+            </div>
+
+            <div class="section-label">Fecha de Nacimiento del Cónyuge</div>
+            <div class="grid-3">
+              <div class="form-group">
+                <label for="diaNacConyuge">Día</label>
+                <input type="number" id="diaNacConyuge" placeholder="DD" min="1" max="31" inputmode="numeric">
+              </div>
+              <div class="form-group">
+                <label for="mesNacConyuge">Mes</label>
+                <select id="mesNacConyuge">
+                  <option value="">Mes</option>
+                  <option value="01">Enero</option>
+                  <option value="02">Febrero</option>
+                  <option value="03">Marzo</option>
+                  <option value="04">Abril</option>
+                  <option value="05">Mayo</option>
+                  <option value="06">Junio</option>
+                  <option value="07">Julio</option>
+                  <option value="08">Agosto</option>
+                  <option value="09">Septiembre</option>
+                  <option value="10">Octubre</option>
+                  <option value="11">Noviembre</option>
+                  <option value="12">Diciembre</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="anioNacConyuge">Año</label>
+                <input type="number" id="anioNacConyuge" placeholder="AAAA" min="1930" max="2007" inputmode="numeric">
+              </div>
+            </div>
+
+            <div class="section-label">Situación Financiera del Cónyuge</div>
+
+            <div class="form-group">
+              <label for="salarioConyuge">Ingreso Bruto Mensual del Cónyuge</label>
+              <input type="text" id="salarioConyuge" placeholder="R$ 0,00" inputmode="numeric">
+            </div>
+
+            <div class="form-group">
+              <label>¿Los ingresos son comprobables?</label>
+              <div class="toggle-group" id="ingComprovConyuge" role="group">
+                <button type="button" class="toggle-btn" data-value="Sí">Sí</button>
+                <button type="button" class="toggle-btn" data-value="No">No</button>
+              </div>
+              <input type="hidden" id="ingComprConyuge" value="">
+            </div>
+
+            <div class="form-group">
+              <label>¿El cónyuge posee restricción en el nombre?</label>
+              <div class="toggle-group" id="restriccionConjGroup" role="group">
+                <button type="button" class="toggle-btn selected" data-value="No">No</button>
+                <button type="button" class="toggle-btn" data-value="Sí">Sí</button>
+              </div>
+              <input type="hidden" id="restriccionConj" value="No">
+            </div>
+
+            <div class="form-group">
+              <label>¿El cónyuge posee préstamos o financiamientos activos?</label>
+              <div class="toggle-group" id="deudasConjGroup" role="group">
+                <button type="button" class="toggle-btn selected" data-value="No">No</button>
+                <button type="button" class="toggle-btn" data-value="Sí">Sí</button>
+              </div>
+              <input type="hidden" id="deudasConj" value="No">
+            </div>
+
+            <div class="conditional-section" id="deudasConjSection">
+              <div class="form-group">
+                <label for="cuotasConj">Valor mensual total de las cuotas (cónyuge)</label>
+                <input type="text" id="cuotasConj" placeholder="R$ 0,00" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+
+          <!-- Mensaje si no aplica cónyuge -->
+          <div id="conyugeSkip" class="skip-message" hidden>
+            <div class="skip-icon">👤</div>
+            <p>Este paso no aplica para su estado civil.<br>Haga clic en Continuar.</p>
+          </div>
+
+          <!-- Navegación -->
+          <nav class="step-nav">
+            <button type="button" class="btn btn-prev" id="prev4">← Atrás</button>
+            <button type="button" class="btn btn-next" id="next4">Continuar →</button>
+          </nav>
+
+        </div>
+      </section>
+
+      <!-- ======================================================
+           PASO 5: INMUEBLE
+      ====================================================== -->
+      <section class="step" id="step5" aria-label="Paso 5: Información del Inmueble">
+
+        <div class="step-header">
+          <span class="step-badge">Paso 5</span>
+          <h2>Información del Inmueble</h2>
+          <p>¿Qué tipo de propiedad está buscando?</p>
+        </div>
+
+        <div class="step-body">
+
+          <!-- Tipo de inmueble -->
+          <div class="form-group">
+            <label>Tipo de Inmueble <span class="req" aria-hidden="true">*</span></label>
+            <div class="toggle-group" id="tipoInmuebleGroup" role="group" aria-label="Tipo de inmueble">
+              <button type="button" class="toggle-btn" data-value="Casa">🏠 Casa</button>
+              <button type="button" class="toggle-btn" data-value="Apartamento">🏢 Apartamento</button>
+              <button type="button" class="toggle-btn" data-value="Terreno">🌳 Terreno</button>
+              <button type="button" class="toggle-btn" data-value="Comercial">🏪 Comercial</button>
+            </div>
+            <input type="hidden" id="tipoInmueble" value="">
+          </div>
+
+          <!-- Condición -->
+          <div class="form-group">
             <label>Condición</label>
-            <select id="condicion">
-                <option>Nuevo</option>
-                <option>Usado</option>
-            </select>
+            <div class="toggle-group" id="condicionGroup" role="group">
+              <button type="button" class="toggle-btn" data-value="Nuevo">Nuevo</button>
+              <button type="button" class="toggle-btn" data-value="Usado">Usado</button>
+              <button type="button" class="toggle-btn" data-value="En construcción">En construcción</button>
+            </div>
+            <input type="hidden" id="condicion" value="">
+          </div>
+
+          <!-- Valor -->
+          <div class="form-group">
+            <label for="valorInmueble">Valor aproximado del inmueble</label>
+            <input type="text" id="valorInmueble" placeholder="R$ 0,00" inputmode="numeric">
+          </div>
+
+          <!-- Ciudad -->
+          <div class="form-group">
+            <label for="ciudad">Ciudad de Interés <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="ciudad" placeholder="Ej: Campo Grande - MS">
+            <span class="field-error" role="alert">Ingrese la ciudad</span>
+          </div>
+
+          <!-- Entrada -->
+          <div class="form-group">
+            <label>¿Tiene valor para entrada (mínimo 20%)?</label>
+            <div class="toggle-group" id="entradaGroup" role="group">
+              <button type="button" class="toggle-btn" data-value="Sí, tengo">Sí, tengo</button>
+              <button type="button" class="toggle-btn" data-value="Parcialmente">Parcialmente</button>
+              <button type="button" class="toggle-btn" data-value="No">No tengo aún</button>
+            </div>
+            <input type="hidden" id="entrada" value="">
+          </div>
+
+          <!-- Inmueble definido -->
+          <div class="form-group">
+            <label>¿Ya tiene un inmueble en mente?</label>
+            <div class="toggle-group" id="inmuebleDefinidoGroup" role="group">
+              <button type="button" class="toggle-btn" data-value="Sí">Sí, ya lo elegí</button>
+              <button type="button" class="toggle-btn" data-value="No">Aún buscando</button>
+            </div>
+            <input type="hidden" id="inmuebleDefinido" value="">
+          </div>
+
+          <!-- Comentarios -->
+          <div class="form-group">
+            <label for="comentarios">¿Algún comentario adicional para el corredor?</label>
+            <input type="text" id="comentarios" placeholder="Observaciones, urgencia, preferencias...">
+          </div>
+
+          <!-- Navegación -->
+          <nav class="step-nav">
+            <button type="button" class="btn btn-prev" id="prev5">← Atrás</button>
+            <button type="button" class="btn btn-next" id="next5">Ver Resumen →</button>
+          </nav>
+
+        </div>
+      </section>
+
+      <!-- ======================================================
+           PASO 6: RESUMEN
+      ====================================================== -->
+      <section class="step" id="step6" aria-label="Paso 6: Resumen del Pre-Análisis">
+
+        <div class="step-header">
+          <span class="step-badge">Paso 6</span>
+          <h2>Resumen del Pre-Análisis</h2>
+          <p>Revise la información antes de enviar al corredor</p>
         </div>
 
-        <div class="form-group">
-            <label>Ciudad de Interés</label>
-            <input type="text" id="ciudad">
+        <div class="step-body">
+
+          <!-- Hero del resumen -->
+          <div class="summary-hero">
+            <div class="sum-name" id="sumNombre">—</div>
+            <div class="sum-sub" id="sumPerfil">—</div>
+            <div id="sumElegibilidad"></div>
+          </div>
+
+          <!-- Grilla de datos financieros -->
+          <div class="summary-grid">
+            <div class="summary-card">
+              <div class="sum-label">Ingreso Titular</div>
+              <div class="sum-value income" id="sumSalario">—</div>
+            </div>
+            <div class="summary-card">
+              <div class="sum-label">Ingreso Cónyuge</div>
+              <div class="sum-value income" id="sumSalarioConyuge">—</div>
+            </div>
+            <div class="summary-card">
+              <div class="sum-label">Renta Familiar Total</div>
+              <div class="sum-value income" id="sumRentaTotal">—</div>
+            </div>
+            <div class="summary-card">
+              <div class="sum-label">Comprometimiento Aprox.</div>
+              <div class="sum-value" id="sumComprometimiento">—</div>
+            </div>
+          </div>
+
+          <!-- Alertas dinámicas -->
+          <div id="sumAlertas"></div>
+
+          <!-- Inmueble y ciudad -->
+          <div class="summary-grid">
+            <div class="summary-card">
+              <div class="sum-label">Inmueble</div>
+              <div class="sum-value" id="sumInmueble">—</div>
+            </div>
+            <div class="summary-card">
+              <div class="sum-label">Ciudad</div>
+              <div class="sum-value" id="sumCiudad">—</div>
+            </div>
+          </div>
+
+          <!-- Navegación -->
+          <nav class="step-nav">
+            <button type="button" class="btn btn-prev" id="prev6">← Editar</button>
+            <button type="button" class="btn btn-whatsapp" id="btnWhatsapp">
+              📲 Enviar por WhatsApp
+            </button>
+          </nav>
+
         </div>
+      </section>
 
-        <button type="submit">
-            Enviar por WhatsApp
-        </button>
+    </main>
+    <!-- /card -->
 
-    </form>
+  </div>
+  <!-- /wrapper -->
 
-</div>
-
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
+
 </html>

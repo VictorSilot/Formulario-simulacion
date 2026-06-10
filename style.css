@@ -4,14 +4,9 @@
    ============================================================ */
 
 /* ===== 1. VARIABLES & RESET ===== */
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  /* Paleta de colores */
   --navy:        #0B1F3A;
   --navy-mid:    #162D52;
   --navy-light:  #1E3A6E;
@@ -21,16 +16,12 @@
   --gold-light:  #E8C76B;
   --gold-dim:    rgba(201,168,76,0.15);
   --gold-border: rgba(201,168,76,0.35);
-
-  /* Superficie y texto */
   --surface:     #F7F9FC;
   --surface-alt: #EEF2FB;
   --white:       #FFFFFF;
   --border:      #DDE3ED;
   --text:        #1E293B;
   --text-muted:  #64748B;
-
-  /* Estados */
   --success:     #10B981;
   --success-bg:  #D1FAE5;
   --success-bd:  #A7F3D0;
@@ -38,25 +29,15 @@
   --warning:     #F59E0B;
   --warning-bg:  #FEF3C7;
   --warning-bd:  #FDE68A;
-
-  /* WhatsApp */
   --whatsapp:    #25D366;
   --whatsapp-dk: #128C7E;
-
-  /* Radios y sombras */
   --radius:      12px;
   --radius-sm:   8px;
-  --radius-xs:   6px;
-  --shadow:      0 4px 24px rgba(11,31,58,0.10);
   --shadow-lg:   0 12px 48px rgba(11,31,58,0.18);
-  --shadow-btn:  0 4px 16px rgba(26,86,219,0.25);
-  --shadow-btn-h:0 6px 20px rgba(26,86,219,0.35);
 }
 
 /* ===== 2. BASE ===== */
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background: linear-gradient(150deg, #0B1F3A 0%, #1A2F50 50%, #0F2645 100%);
@@ -68,40 +49,35 @@ body {
   padding: 24px 16px 60px;
 }
 
-/* ===== 3. LAYOUT WRAPPER ===== */
-.wrapper {
-  max-width: 720px;
-  margin: 0 auto;
-}
+/* ===== 3. WRAPPER ===== */
+.wrapper { max-width: 740px; margin: 0 auto; }
 
 /* ===== 4. HEADER ===== */
 .header {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
+  padding: 0 8px;
 }
 
 .header .logo {
-  width: 90px;
-  height: 90px;
+  width: clamp(60px, 15vw, 100px);
+  height: clamp(60px, 15vw, 100px);
   object-fit: contain;
   filter: brightness(0) invert(1);
-  margin-bottom: 14px;
+  margin: 0 auto 14px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  transition: opacity 0.3s;
 }
 
 .header h1 {
   color: var(--white);
-  font-size: 26px;
+  font-size: clamp(18px, 4vw, 26px);
   font-weight: 700;
   letter-spacing: -0.3px;
 }
 
 .header p {
   color: var(--gold-light);
-  font-size: 13px;
+  font-size: clamp(11px, 2.5vw, 13px);
   margin-top: 5px;
   letter-spacing: 0.9px;
   text-transform: uppercase;
@@ -109,12 +85,10 @@ body {
 }
 
 /* ===== 5. BARRA DE PROGRESO ===== */
-.progress-wrap {
-  margin-bottom: 28px;
-}
+.progress-wrap { margin-bottom: 24px; }
 
 .progress-track {
-  background: rgba(255, 255, 255, 0.10);
+  background: rgba(255,255,255,0.10);
   border-radius: 100px;
   height: 6px;
   margin-bottom: 10px;
@@ -131,12 +105,12 @@ body {
 .progress-label {
   display: flex;
   justify-content: space-between;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255,255,255,0.55);
   font-size: 12px;
   font-weight: 500;
 }
 
-/* ===== 6. TARJETA PRINCIPAL ===== */
+/* ===== 6. CARD ===== */
 .card {
   background: var(--white);
   border-radius: 20px;
@@ -144,32 +118,24 @@ body {
   overflow: hidden;
 }
 
-/* ===== 7. PASOS (STEPS) ===== */
-.step {
-  display: none;
-  animation: fadeIn 0.3s ease;
-}
-
-.step.active {
-  display: block;
-}
+/* ===== 7. STEPS ===== */
+.step { display: none; animation: fadeIn 0.3s ease; }
+.step.active { display: block; }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Encabezado de cada paso */
 .step-header {
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
-  padding: 28px 32px 24px;
+  padding: 26px 32px 22px;
   border-bottom: 3px solid var(--gold);
 }
 
 .step-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
   background: var(--gold-dim);
   border: 1px solid var(--gold-border);
   color: var(--gold-light);
@@ -184,68 +150,36 @@ body {
 
 .step-header h2 {
   color: var(--white);
-  font-size: 22px;
+  font-size: clamp(17px, 3.5vw, 21px);
   font-weight: 700;
-  line-height: 1.25;
 }
 
-.step-header p {
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 13px;
-  margin-top: 5px;
-}
+.step-header p { color: rgba(255,255,255,0.55); font-size: 13px; margin-top: 4px; }
 
-/* Cuerpo del paso */
-.step-body {
-  padding: 32px;
-}
+.step-body { padding: 28px 32px; }
 
-/* ===== 8. ETIQUETAS DE SECCIÓN ===== */
+/* ===== 8. SECTION LABELS ===== */
 .section-label {
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.2px;
   color: var(--text-muted);
-  margin: 28px 0 16px;
+  margin: 24px 0 14px;
   display: flex;
   align-items: center;
   gap: 8px;
 }
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.section-label:first-child { margin-top: 0; }
 
-.section-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
+/* ===== 9. GRIDS ===== */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.span-full { grid-column: 1 / -1; }
 
-.section-label:first-child {
-  margin-top: 0;
-}
-
-/* ===== 9. GRILLAS ===== */
-.grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.grid-3 {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 12px;
-}
-
-/* Utilidad para spans completos dentro de grid */
-.span-full {
-  grid-column: 1 / -1;
-}
-
-/* ===== 10. ELEMENTOS DE FORMULARIO ===== */
-.form-group {
-  margin-bottom: 18px;
-}
+/* ===== 10. FORM ELEMENTS ===== */
+.form-group { margin-bottom: 16px; }
 
 .form-group label {
   display: block;
@@ -255,12 +189,8 @@ body {
   margin-bottom: 7px;
 }
 
-.form-group label .req {
-  color: var(--error);
-  margin-left: 2px;
-}
+.form-group label .req { color: var(--error); margin-left: 2px; }
 
-/* Inputs y selects */
 input[type="text"],
 input[type="tel"],
 input[type="email"],
@@ -273,32 +203,21 @@ select {
   font-size: 15px;
   color: var(--text);
   background: var(--surface);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
   appearance: none;
   -webkit-appearance: none;
   font-family: inherit;
 }
 
-input:focus,
-select:focus {
+input:focus, select:focus {
   outline: none;
   border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.10);
+  box-shadow: 0 0 0 3px rgba(26,86,219,0.10);
   background: var(--white);
 }
 
-/* Estado de error en input */
-input.invalid {
-  border-color: var(--error);
-  background: #FFF5F5;
-}
+input.invalid { border-color: var(--error); background: #FFF5F5; }
 
-/* Estado válido en input */
-input.valid {
-  border-color: var(--success);
-}
-
-/* Select con flecha personalizada */
 select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -307,72 +226,44 @@ select {
   cursor: pointer;
 }
 
-/* Hints y errores de campo */
-.field-hint {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-top: 5px;
-  line-height: 1.4;
-}
-
-.field-error {
-  font-size: 12px;
-  color: var(--error);
-  margin-top: 5px;
-  display: none;
-  font-weight: 500;
-}
-
-/* Mostrar error cuando el grupo tiene clase has-error */
-.form-group.has-error .field-error {
-  display: block;
-}
-
+.field-hint { font-size: 12px; color: var(--text-muted); margin-top: 5px; line-height: 1.4; }
+.field-error { font-size: 12px; color: var(--error); margin-top: 5px; display: none; font-weight: 500; }
+.form-group.has-error .field-error { display: block; }
 .form-group.has-error input,
-.form-group.has-error select {
-  border-color: var(--error);
-  background: #FFF5F5;
-}
+.form-group.has-error select { border-color: var(--error); background: #FFF5F5; }
 
-/* ===== 11. BOTONES TOGGLE ===== */
-.toggle-group {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
+/* ===== 11. TOGGLE BUTTONS ===== */
+.toggle-group { display: flex; gap: 8px; flex-wrap: wrap; }
 
 .toggle-btn {
   flex: 1;
-  min-width: 80px;
-  padding: 10px 14px;
+  min-width: 70px;
+  padding: 10px 12px;
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--surface);
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text-muted);
   text-align: center;
   transition: all 0.18s ease;
   user-select: none;
   font-family: inherit;
+  line-height: 1.3;
 }
 
-.toggle-btn:hover {
-  border-color: var(--blue-light);
-  color: var(--blue);
-  background: #EEF3FF;
-}
+.toggle-btn:hover { border-color: var(--blue-light); color: var(--blue); background: #EEF3FF; }
 
 .toggle-btn.selected {
   background: var(--blue);
   border-color: var(--blue);
   color: var(--white);
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(26, 86, 219, 0.25);
+  box-shadow: 0 2px 8px rgba(26,86,219,0.25);
 }
 
-/* ===== 12. SECCIONES CONDICIONALES ===== */
+/* ===== 12. CONDITIONAL SECTIONS ===== */
 .conditional-section {
   display: none;
   background: var(--surface-alt);
@@ -383,45 +274,30 @@ select {
   margin-bottom: 8px;
   animation: slideDown 0.25s ease;
 }
-
-.conditional-section.visible {
-  display: block;
-}
+.conditional-section.visible { display: block; }
 
 @keyframes slideDown {
   from { opacity: 0; transform: translateY(-6px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== 13. MENSAJE "PASO NO APLICA" ===== */
-.skip-message {
-  text-align: center;
-  padding: 48px 20px;
-  color: var(--text-muted);
-}
+/* ===== 13. SKIP MESSAGE ===== */
+.skip-message { text-align: center; padding: 48px 20px; color: var(--text-muted); }
+.skip-message .skip-icon { font-size: 52px; margin-bottom: 14px; }
+.skip-message p { font-size: 15px; line-height: 1.6; }
 
-.skip-message .skip-icon {
-  font-size: 52px;
-  margin-bottom: 14px;
-}
-
-.skip-message p {
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-/* ===== 14. NAVEGACIÓN DE PASOS ===== */
+/* ===== 14. NAVEGACIÓN ===== */
 .step-nav {
   display: flex;
   gap: 12px;
-  margin-top: 32px;
-  padding-top: 24px;
+  margin-top: 28px;
+  padding-top: 22px;
   border-top: 1px solid var(--border);
 }
 
-/* ===== 15. BOTONES PRINCIPALES ===== */
+/* ===== 15. BOTONES ===== */
 .btn {
-  padding: 14px 28px;
+  padding: 14px 24px;
   border-radius: var(--radius);
   font-size: 15px;
   font-weight: 600;
@@ -430,103 +306,142 @@ select {
   transition: all 0.22s ease;
   font-family: inherit;
   white-space: nowrap;
+  touch-action: manipulation;
 }
+.btn:active { transform: translateY(1px) !important; }
 
-.btn:active {
-  transform: translateY(1px) !important;
-}
-
-/* Botón Atrás */
 .btn-prev {
   background: var(--surface);
   color: var(--text-muted);
   border: 1.5px solid var(--border);
   flex-shrink: 0;
 }
+.btn-prev:hover { background: var(--border); color: var(--text); }
 
-.btn-prev:hover {
-  background: var(--border);
-  color: var(--text);
-}
-
-/* Botón Continuar */
 .btn-next {
   flex: 1;
   background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
   color: var(--white);
-  box-shadow: var(--shadow-btn);
+  box-shadow: 0 4px 16px rgba(26,86,219,0.25);
 }
+.btn-next:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,86,219,0.35); }
 
-.btn-next:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-btn-h);
-}
-
-/* Botón WhatsApp */
 .btn-whatsapp {
   flex: 1;
   background: linear-gradient(135deg, var(--whatsapp-dk), var(--whatsapp));
   color: var(--white);
-  font-size: 16px;
-  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.30);
+  font-size: 15px;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.30);
 }
+.btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(37,211,102,0.45); }
 
-.btn-whatsapp:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(37, 211, 102, 0.45);
-}
+/* ===== 16. RESUMEN / RESULTADOS ===== */
 
-/* ===== 16. RESUMEN (PASO 6) ===== */
+/* Hero del resumen */
 .summary-hero {
   background: linear-gradient(135deg, var(--navy), var(--navy-mid));
   border-radius: var(--radius);
-  padding: 24px;
-  margin-bottom: 20px;
-  color: var(--white);
+  padding: 22px 24px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.summary-hero .sum-name {
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1.2;
+.summary-hero-logo img {
+  width: clamp(50px, 10vw, 72px);
+  height: clamp(50px, 10vw, 72px);
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  flex-shrink: 0;
 }
 
-.summary-hero .sum-sub {
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 14px;
-  margin-top: 4px;
-}
+.summary-hero-info { flex: 1; min-width: 0; }
 
-/* Badge de elegibilidad */
+.sum-name { font-size: clamp(16px, 3.5vw, 20px); font-weight: 700; color: var(--white); }
+.sum-sub  { color: rgba(255,255,255,0.55); font-size: 13px; margin-top: 3px; }
+
 .eligibility-badge {
   display: inline-block;
-  margin-top: 16px;
-  padding: 6px 16px;
+  margin-top: 12px;
+  padding: 5px 14px;
   border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.eligibility-badge.green  { background: rgba(16,185,129,0.20); color: #6EE7B7; border: 1px solid rgba(16,185,129,0.40); }
+.eligibility-badge.yellow { background: rgba(245,158,11,0.20);  color: #FCD34D; border: 1px solid rgba(245,158,11,0.40); }
+.eligibility-badge.red    { background: rgba(239,68,68,0.20);   color: #FCA5A5; border: 1px solid rgba(239,68,68,0.40); }
+
+/* Títulos de sección en resultados */
+.result-section-title {
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  margin: 20px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
 }
 
-.eligibility-badge.green {
-  background: rgba(16, 185, 129, 0.20);
-  color: #6EE7B7;
-  border: 1px solid rgba(16, 185, 129, 0.40);
+/* ── Desglose de ingresos ── */
+.income-breakdown { display: flex; flex-direction: column; gap: 8px; margin-bottom: 4px; }
+
+.income-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-.eligibility-badge.yellow {
-  background: rgba(245, 158, 11, 0.20);
-  color: #FCD34D;
-  border: 1px solid rgba(245, 158, 11, 0.40);
+.income-row.complementary { border-color: #C7D7F8; background: var(--surface-alt); }
+.income-row.total-row     { background: var(--navy); border-color: var(--navy); }
+.income-row.total-row .inc-label { color: rgba(255,255,255,0.8); font-weight: 600; }
+.income-row.total-row .inc-value { color: var(--gold-light); font-size: 16px; font-weight: 700; }
+
+.inc-left  { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
+.inc-label { font-size: 13px; color: var(--text); font-weight: 500; }
+.inc-badges { display: flex; gap: 4px; flex-wrap: wrap; }
+.inc-value { font-size: 14px; font-weight: 700; color: var(--blue); white-space: nowrap; }
+
+.badge-ir  { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 100px; background: rgba(16,185,129,0.15); color: #059669; border: 1px solid rgba(16,185,129,0.30); white-space: nowrap; }
+.badge-ext { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 100px; background: rgba(26,86,219,0.12); color: var(--blue); border: 1px solid rgba(26,86,219,0.25); white-space: nowrap; }
+.badge-warn{ font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 100px; background: rgba(245,158,11,0.15); color: #B45309; border: 1px solid rgba(245,158,11,0.30); white-space: nowrap; }
+
+/* ── Cards de capacidad ── */
+.capacity-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
-.eligibility-badge.red {
-  background: rgba(239, 68, 68, 0.20);
-  color: #FCA5A5;
-  border: 1px solid rgba(239, 68, 68, 0.40);
+.capacity-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
 }
 
-/* Grilla del resumen */
+.capacity-card.highlight { border-color: var(--gold); background: linear-gradient(135deg, #FFFBF0, #FFF8E1); }
+.capacity-card.primary   { border-color: var(--blue); background: linear-gradient(135deg, #EEF3FF, #E8F0FF); }
+
+.cap-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); margin-bottom: 8px; }
+.cap-value { font-size: clamp(15px, 3vw, 20px); font-weight: 800; color: var(--text); line-height: 1.1; margin-bottom: 6px; }
+.cap-value.danger { color: var(--error); }
+.capacity-card.highlight .cap-value { color: var(--gold); }
+.capacity-card.primary .cap-value   { color: var(--blue); }
+.cap-note { font-size: 11px; color: var(--text-muted); line-height: 1.3; }
+
+/* ── Grilla del resumen ── */
 .summary-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -534,40 +449,17 @@ select {
   margin-bottom: 16px;
 }
 
-/* Tarjetas del resumen */
 .summary-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 14px 16px;
-  transition: border-color 0.2s;
 }
 
-.summary-card:hover {
-  border-color: var(--blue-light);
-}
+.summary-card .sum-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 5px; }
+.summary-card .sum-value { font-size: 15px; font-weight: 600; color: var(--text); }
 
-.summary-card .sum-label {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-muted);
-  margin-bottom: 5px;
-}
-
-.summary-card .sum-value {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.3;
-}
-
-.summary-card .sum-value.income {
-  color: var(--blue);
-}
-
-/* ===== 17. CAJAS DE ALERTA ===== */
+/* ===== 17. ALERTAS ===== */
 .alert-box {
   border-radius: var(--radius-sm);
   padding: 12px 16px;
@@ -579,94 +471,68 @@ select {
   gap: 10px;
   line-height: 1.5;
 }
+.alert-box.warning { background: var(--warning-bg); color: #92400E; border: 1px solid var(--warning-bd); }
+.alert-box.ok      { background: var(--success-bg); color: #065F46; border: 1px solid var(--success-bd); }
 
-.alert-box.warning {
-  background: var(--warning-bg);
-  color: #92400E;
-  border: 1px solid var(--warning-bd);
+/* ===== 18. DISCLAIMER ===== */
+.disclaimer-box {
+  background: #F8F9FA;
+  border: 1px solid #DEE2E6;
+  border-left: 4px solid var(--gold);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+.disclaimer-box strong { color: var(--text); }
+
+/* ===== 19. RESPONSIVE — TABLET (768–1024px) ===== */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .capacity-cards { grid-template-columns: 1fr 1fr; }
+  .capacity-card:last-child { grid-column: 1 / -1; }
 }
 
-.alert-box.ok {
-  background: var(--success-bg);
-  color: #065F46;
-  border: 1px solid var(--success-bd);
+/* ===== 20. RESPONSIVE — MOBILE (<768px) ===== */
+@media (max-width: 768px) {
+
+  body { padding: 12px 10px 48px; }
+
+  .step-header { padding: 20px 18px 16px; }
+  .step-body   { padding: 20px 16px; }
+
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .span-full { grid-column: 1; }
+
+  .toggle-group { gap: 6px; }
+  .toggle-btn   { font-size: 12px; padding: 9px 10px; min-width: 60px; }
+
+  .summary-hero { flex-direction: column; text-align: center; gap: 12px; padding: 18px; }
+
+  .capacity-cards  { grid-template-columns: 1fr; }
+  .summary-grid    { grid-template-columns: 1fr; }
+  .income-row      { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .inc-value       { font-size: 15px; }
+
+  .step-nav { flex-direction: column-reverse; gap: 10px; }
+  .btn-prev, .btn-next, .btn-whatsapp { width: 100%; flex: unset; }
+  .btn { font-size: 14px; padding: 13px 18px; }
 }
 
-/* ===== 18. RESPONSIVE — TABLET ===== */
-@media (max-width: 640px) {
-
-  body {
-    padding: 16px 12px 48px;
-  }
-
-  .header h1 {
-    font-size: 22px;
-  }
-
-  .step-header {
-    padding: 22px 20px 18px;
-  }
-
-  .step-header h2 {
-    font-size: 19px;
-  }
-
-  .step-body {
-    padding: 22px 18px;
-  }
-
-  .grid-2,
-  .grid-3 {
-    grid-template-columns: 1fr;
-  }
-
-  .summary-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .step-nav {
-    flex-direction: column-reverse;
-    gap: 10px;
-  }
-
-  .btn-prev {
-    width: 100%;
-  }
-
-  .btn-next,
-  .btn-whatsapp {
-    flex: unset;
-    width: 100%;
-  }
+/* ===== 21. RESPONSIVE — MOBILE PEQUEÑO (<420px) ===== */
+@media (max-width: 420px) {
+  .header h1    { font-size: 17px; }
+  .step-badge   { font-size: 10px; }
+  .step-header h2 { font-size: 16px; }
+  .cap-value    { font-size: 16px; }
+  .sum-name     { font-size: 16px; }
+  .toggle-btn   { font-size: 11px; padding: 8px 8px; min-width: 50px; }
 }
 
-/* ===== 19. RESPONSIVE — MOBILE PEQUEÑO ===== */
-@media (max-width: 380px) {
-
-  .toggle-group {
-    gap: 6px;
-  }
-
-  .toggle-btn {
-    font-size: 13px;
-    padding: 9px 10px;
-    min-width: 60px;
-  }
-
-  .btn {
-    font-size: 14px;
-    padding: 13px 20px;
-  }
-}
-
-/* ===== 20. ACCESIBILIDAD: REDUCCIÓN DE MOVIMIENTO ===== */
+/* ===== 22. ACCESIBILIDAD ===== */
 @media (prefers-reduced-motion: reduce) {
-
-  .step,
-  .conditional-section,
-  .progress-fill,
-  .btn,
-  .toggle-btn {
+  .step, .conditional-section, .progress-fill, .btn, .toggle-btn {
     animation: none;
     transition: none;
   }

@@ -549,7 +549,7 @@ function enviarWhatsapp() {
   if (coment) msg += '• Obs: ' + coment + '\n';
 
   msg += '\n━━━━━━━━━━━━━━━━━━━━━━\n';
-  msg += '_Formulario generado por Corretor Víctor Silot';
+  msg += 'Formulario generado por Corretor Víctor Silot';
 
   window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
 }

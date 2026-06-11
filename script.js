@@ -1,5 +1,5 @@
 /* ============================================================
-   VICTOR SILOT BROKERS — Pre-Análisis de Financiamiento
+   CONSULTOR VICTOR SILOT — Pre-Análisis de Financiamiento
    script.js — Lógica completa con ingresos complementarios
    ============================================================ */
 
@@ -440,7 +440,7 @@ function enviarWhatsapp() {
   const fechaNac = (diaNac && mesNac && anioNac) ? diaNac + '/' + mesNac + '/' + anioNac : '—';
 
   let msg = '*PRE-ANÁLISIS DE FINANCIAMIENTO*\n';
-  msg += '_Víctor Silot Brokers_\n';
+  msg += '_Consultor Víctor Silot_\n';
   msg += '━━━━━━━━━━━━━━━━━━━━━━\n\n';
 
   msg += '*👤 DATOS PERSONALES*\n';
@@ -516,7 +516,7 @@ function enviarWhatsapp() {
 
   msg += '\n━━━━━━━━━━━━━━━━━━━━━━\n';
   msg += '⚠ Simulación preliminar — sujeita a análisis crediticio oficial\n';
-  msg += '_Formulario generado por VictorSilot.com_';
+  msg += 'Formulario generado por Victor Silot';
 
   window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
 }
